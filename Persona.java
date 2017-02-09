@@ -21,6 +21,8 @@ public class Persona
     private int caloriasIngeridas;
     // Atributo que indica si puede comer mas o no.
     private boolean puedeComerMas;
+    // Atributo que almacena el alimento mas calorico consumido.
+    private Comida alimentoMasCalorico;
 
     /**
      * Constructor for objects of class Persona
@@ -34,6 +36,7 @@ public class Persona
         this.edad = edad;
         caloriasIngeridas = 0;
         actualizarMetabolismo();
+        alimentoMasCalorico = null;
     }
 
     /**
@@ -55,6 +58,9 @@ public class Persona
             caloriasComidaActual = comida.getCalorias();
             caloriasIngeridas += caloriasComidaActual;
             actualizarMetabolismo();
+            if(alimentoMasCalorico == null || comida.getCalorias() >= alimentoMasCalorico.getCalorias()){
+                alimentoMasCalorico = comida;
+            }
         }else{
             System.out.println("¡Ya no tengo hambre!");
         }
@@ -64,7 +70,7 @@ public class Persona
     /**
      * Metodo que actualiza el atributo puedeComerMas.
      */
-    public void actualizarMetabolismo()
+    private void actualizarMetabolismo()
     {
         int entero = 5;
         if(!hombre){
@@ -96,5 +102,19 @@ public class Persona
         }
         System.out.println(respuesta);
         return respuesta;
+    }
+    
+    /**
+     * Imprime por pantalla y que devuelva el nombre de la comida más 
+     * calórica ingerida hasta ahora por un usuario.
+     */
+    public Comida getAlimentoMasCaloricoConsumido()
+    {
+        if(alimentoMasCalorico != null){
+            System.out.println(alimentoMasCalorico.getNombre());
+        }else{
+            System.out.println("¡Aun no he comido nada!");
+        }
+        return alimentoMasCalorico;
     }
 }

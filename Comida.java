@@ -21,10 +21,18 @@ public class Comida
     }
     
     /**
-     * 
+     * Devuelve el numero de calorias que tiene el alimento.
      */
     public int getCalorias()
     {
         return calorias;
+    }
+    
+    /**
+     * Devuelve el nombre del alimento.
+     */
+    public String getNombre()
+    {
+        return nombre;
     }
 }
