@@ -158,6 +158,7 @@ public class Persona
         int contador = 0;
         for(Comida comida : listaADevolver){
             arrayADevolver[contador] = comida;
+            contador++;
         }
         return arrayADevolver;
     }
