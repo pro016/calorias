@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Write a description of class Persona here.
@@ -23,6 +25,8 @@ public class Persona
     private boolean puedeComerMas;
     // Atributo que almacena el alimento mas calorico consumido.
     private Comida alimentoMasCalorico;
+    //
+    private ArrayList<Comida> comidaConsumida;
 
     /**
      * Constructor for objects of class Persona
@@ -37,6 +41,7 @@ public class Persona
         caloriasIngeridas = 0;
         actualizarMetabolismo();
         alimentoMasCalorico = null;
+        comidaConsumida = new ArrayList<Comida>();
     }
 
     /**
@@ -58,6 +63,7 @@ public class Persona
             caloriasComidaActual = comida.getCalorias();
             caloriasIngeridas += caloriasComidaActual;
             actualizarMetabolismo();
+            comidaConsumida.add(comida);
             if(alimentoMasCalorico == null || comida.getCalorias() >= alimentoMasCalorico.getCalorias()){
                 alimentoMasCalorico = comida;
             }
@@ -78,7 +84,7 @@ public class Persona
         }
         puedeComerMas = caloriasIngeridas <= (10*pesoEnKg)+(6*alturaEnCm)+(5*edad)+entero;
     }
-    
+
     /**
      * Permite preguntar cosas a la persona.Si no ha sobrepasado su metabolismo basal, 
      * te contestará "SI" o "NO" dependiendo de si la pregunta tiene una longitud 
@@ -96,14 +102,14 @@ public class Persona
         }else{
             respuesta = "NO";
         }
-        
+
         if(!puedeComerMas || pregunta.contains(nombre)){
             respuesta = pregunta.toUpperCase();
         }
         System.out.println(respuesta);
         return respuesta;
     }
-    
+
     /**
      * Imprime por pantalla y que devuelva el nombre de la comida más 
      * calórica ingerida hasta ahora por un usuario.
@@ -116,5 +122,36 @@ public class Persona
             System.out.println("¡Aun no he comido nada!");
         }
         return alimentoMasCalorico;
+    }
+
+    /**
+     * Imprime por pantalla la lista de comidas ingeridas ordenadas de mayor a menor valor calórico.
+     */
+    public void verListadoComidasIngeridas()
+    {
+        ArrayList<Comida> copia = new ArrayList<Comida>();
+        for(Comida comida : comidaConsumida){
+            copia.add(comida);
+        }
+        int caloriaMax = 0;
+        while(copia.size() != 0){
+            Comida comida = copia.get(0);
+            int indexGuardado = 0;
+            if(copia.size() != 1){
+                int contador = 1;
+                while(contador < copia.size()){
+                    Comida comidaAspirante = copia.get(contador);
+                    if(copia.get(indexGuardado).getCalorias() < comidaAspirante.getCalorias()){
+                        indexGuardado = contador;
+                    }
+                    contador++;
+                }
+            }
+            System.out.println(copia.remove(indexGuardado));
+        }
+        
+        if(comidaConsumida.size() == 0){
+            System.out.println("Aun no he comido nada.");
+        }
     }
 }

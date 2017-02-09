@@ -35,4 +35,12 @@ public class Comida
     {
         return nombre;
     }
+    
+    /**
+     * Devuelve un String con todos los datos de la comida.
+     */
+    public String toString()
+    {
+        return nombre + ", " + calorias + " Calorias";
+    }
 }
