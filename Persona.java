@@ -72,4 +72,29 @@ public class Persona
         }
         puedeComerMas = caloriasIngeridas <= (10*pesoEnKg)+(6*alturaEnCm)+(5*edad)+entero;
     }
+    
+    /**
+     * Permite preguntar cosas a la persona.Si no ha sobrepasado su metabolismo basal, 
+     * te contestará "SI" o "NO" dependiendo de si la pregunta tiene una longitud 
+     * divisible por 3 o no, respectivamente.
+     * En caso de que la persona ya haya sobrepasado el metabolismo basal o en el caso 
+     * de que tu pregunta contenga el nombre de la persona, responderá con la misma 
+     * pregunta que le has hecho pero en mayusculas indiferentemente de la longitud 
+     * de a pregunta.
+     */
+    public String contestar(String pregunta)
+    {
+        String respuesta = pregunta;
+        if(pregunta.length()%3 == 0){
+            respuesta = "SI";
+        }else{
+            respuesta = "NO";
+        }
+        
+        if(!puedeComerMas || pregunta.contains(nombre)){
+            respuesta = pregunta.toUpperCase();
+        }
+        System.out.println(respuesta);
+        return respuesta;
+    }
 }
