@@ -127,9 +127,10 @@ public class Persona
     /**
      * Imprime por pantalla la lista de comidas ingeridas ordenadas de mayor a menor valor calórico.
      */
-    public void verListadoComidasIngeridas()
+    public Comida[] verListadoComidasIngeridas()
     {
         ArrayList<Comida> copia = new ArrayList<Comida>();
+        ArrayList<Comida> listaADevolver = new ArrayList<Comida>();
         for(Comida comida : comidaConsumida){
             copia.add(comida);
         }
@@ -147,11 +148,17 @@ public class Persona
                     contador++;
                 }
             }
+            listaADevolver.add(copia.get(indexGuardado));
             System.out.println(copia.remove(indexGuardado));
         }
-        
         if(comidaConsumida.size() == 0){
             System.out.println("Aun no he comido nada.");
         }
+        Comida[] arrayADevolver = new Comida[comidaConsumida.size()];
+        int contador = 0;
+        for(Comida comida : listaADevolver){
+            arrayADevolver[contador] = comida;
+        }
+        return arrayADevolver;
     }
 }
