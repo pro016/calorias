@@ -25,7 +25,7 @@ public class Persona
     private boolean puedeComerMas;
     // Atributo que almacena el alimento mas calorico consumido.
     private Comida alimentoMasCalorico;
-    //
+    // Coleccion que almacena la comida que ha consumido el usuario.
     private ArrayList<Comida> comidaConsumida;
 
     /**
@@ -102,7 +102,6 @@ public class Persona
         }else{
             respuesta = "NO";
         }
-
         if(!puedeComerMas || pregunta.contains(nombre)){
             respuesta = pregunta.toUpperCase();
         }
@@ -114,14 +113,16 @@ public class Persona
      * Imprime por pantalla y que devuelva el nombre de la comida más 
      * calórica ingerida hasta ahora por un usuario.
      */
-    public Comida getAlimentoMasCaloricoConsumido()
+    public String getAlimentoMasCaloricoConsumido()
     {
+        String textoADevolver = null;
         if(alimentoMasCalorico != null){
-            System.out.println(alimentoMasCalorico.getNombre());
+            textoADevolver = alimentoMasCalorico.getNombre();
+            System.out.println(textoADevolver);
         }else{
             System.out.println("¡Aun no he comido nada!");
         }
-        return alimentoMasCalorico;
+        return textoADevolver;
     }
 
     /**

@@ -44,7 +44,7 @@ public class PersonaTest
         comida3 = new Comida("Lentejas", 600);
         comida4 = new Comida("Cocido", 2000);
         comida5 = new Comida("Ensalada", 269);
-        comida6 = new Comida("Alubias", 600);
+        comida6 = new Comida("Macarrones", 600);
     }
 
     /**
@@ -147,7 +147,7 @@ public class PersonaTest
         assertEquals("SI", persona2.contestar("¿Quieres comer?"));  
         assertEquals("SI", persona2.contestar("¿Todo ok?"));  
         assertEquals("NO", persona2.contestar("¿Te llamas Maria?"));   
-        assertEquals("¿TE LLAMAS LUIS?", persona2.contestar("¿Te llamas Luis?"));          
+        assertEquals("¿TE LLAMAS LUIS?", persona2.contestar("¿Te llamas Luis?"));
         
     }
     
@@ -156,38 +156,38 @@ public class PersonaTest
     {
         assertEquals(null, persona1.getAlimentoMasCaloricoConsumido());
         assertEquals(600, persona1.comer(comida3));
-        assertEquals(comida3, persona1.getAlimentoMasCaloricoConsumido());
+        assertEquals(comida3.getNombre(), persona1.getAlimentoMasCaloricoConsumido());
         assertEquals(269, persona1.comer(comida5));
-        assertEquals(comida3, persona1.getAlimentoMasCaloricoConsumido());
+        assertEquals(comida3.getNombre(), persona1.getAlimentoMasCaloricoConsumido());
         assertEquals(600, persona1.comer(comida6));
-        assertEquals(comida6, persona1.getAlimentoMasCaloricoConsumido());
+        assertEquals(comida6.getNombre(), persona1.getAlimentoMasCaloricoConsumido());
         assertEquals(800, persona1.comer(comida1));
-        assertEquals(comida1, persona1.getAlimentoMasCaloricoConsumido());
+        assertEquals(comida1.getNombre(), persona1.getAlimentoMasCaloricoConsumido());
         assertEquals(-1, persona1.comer(comida5));
-        assertEquals(comida1, persona1.getAlimentoMasCaloricoConsumido());
+        assertEquals(comida1.getNombre(), persona1.getAlimentoMasCaloricoConsumido());
         
         assertEquals(null, persona2.getAlimentoMasCaloricoConsumido());
         assertEquals(600, persona2.comer(comida3));
-        assertEquals(comida3, persona2.getAlimentoMasCaloricoConsumido());
+        assertEquals(comida3.getNombre(), persona2.getAlimentoMasCaloricoConsumido());
         assertEquals(269, persona2.comer(comida5));
-        assertEquals(comida3, persona2.getAlimentoMasCaloricoConsumido());
+        assertEquals(comida3.getNombre(), persona2.getAlimentoMasCaloricoConsumido());
         assertEquals(600, persona2.comer(comida6));
-        assertEquals(comida6, persona2.getAlimentoMasCaloricoConsumido());
+        assertEquals(comida6.getNombre(), persona2.getAlimentoMasCaloricoConsumido());
         assertEquals(800, persona2.comer(comida1));
-        assertEquals(comida1, persona2.getAlimentoMasCaloricoConsumido());
+        assertEquals(comida1.getNombre(), persona2.getAlimentoMasCaloricoConsumido());
         assertEquals(-1, persona2.comer(comida5));
-        assertEquals(comida1, persona2.getAlimentoMasCaloricoConsumido());
+        assertEquals(comida1.getNombre(), persona2.getAlimentoMasCaloricoConsumido());
         
         assertEquals(null, persona3.getAlimentoMasCaloricoConsumido());
         assertEquals(600, persona3.comer(comida3));
-        assertEquals(comida3, persona3.getAlimentoMasCaloricoConsumido());
+        assertEquals(comida3.getNombre(), persona3.getAlimentoMasCaloricoConsumido());
         assertEquals(269, persona3.comer(comida5));
-        assertEquals(comida3, persona3.getAlimentoMasCaloricoConsumido());
+        assertEquals(comida3.getNombre(), persona3.getAlimentoMasCaloricoConsumido());
         assertEquals(600, persona3.comer(comida6));
-        assertEquals(comida6, persona3.getAlimentoMasCaloricoConsumido());
+        assertEquals(comida6.getNombre(), persona3.getAlimentoMasCaloricoConsumido());
         assertEquals(800, persona3.comer(comida1));
-        assertEquals(comida1, persona3.getAlimentoMasCaloricoConsumido());
+        assertEquals(comida1.getNombre(), persona3.getAlimentoMasCaloricoConsumido());
         assertEquals(-1, persona3.comer(comida5));
-        assertEquals(comida1, persona3.getAlimentoMasCaloricoConsumido());
+        assertEquals(comida1.getNombre(), persona3.getAlimentoMasCaloricoConsumido());
     }
 }
